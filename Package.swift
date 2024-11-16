@@ -17,6 +17,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/nerzh/swift-regular-expression", .upToNextMajor(from: "0.2.4")),
         .package(url: "https://github.com/nerzh/swift-custom-logger", .upToNextMajor(from: "1.1.0")),
+        .package(url: "https://github.com/apple/swift-crypto.git", .upToNextMajor(from: "3.8.0")),
     ],
     targets: [
         .target(
@@ -24,6 +25,7 @@ let package = Package(
             dependencies: [
                 .product(name: "SwiftRegularExpression", package: "swift-regular-expression"),
                 .product(name: "SwiftCustomLogger", package: "swift-custom-logger"),
+                .product(name: "Crypto", package: "swift-crypto"),
             ]
         )
     ]

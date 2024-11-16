@@ -7,6 +7,8 @@
  [WebAppInitData](https://core.telegram.org/bots/webapps#webappinitdata)
  **/
 
+import Foundation
+
 public struct TGWebAppInitData {
     
     /// Custom decoding errors
@@ -42,15 +44,15 @@ public struct TGWebAppInitData {
     let queryId: String?
     
     /// An object containing data about the current user.
-    let user: WebAppUser?
+    let user: TGWebAppUser?
     
     /// An object containing data about the chat partner of the current user in the chat where the bot was launched via the attachment menu.
     /// Returned only for private chats and only for Mini Apps launched via the attachment menu.
-    let receiver: WebAppUser?
+    let receiver: TGWebAppUser?
     
     /// An object containing data about the chat where the bot was launched via the attachment menu.
     /// Returned for supergroups, channels, and group chats – only for Mini Apps launched via the attachment menu.
-    let chat: WebAppChat?
+    let chat: TGWebAppChat?
     
     /// Optional. Type of the chat from which the Mini App was opened. Can be either “sender” for a private chat with the user opening the link, “private”, “group”, “supergroup”, or “channel”.
     /// Returned only for Mini Apps launched from direct links.
@@ -80,21 +82,21 @@ public struct TGWebAppInitData {
         
         let jsonDecoder = JSONDecoder()
         if let userQuery = dictionary[CodingKeys.user.rawValue]?.data(using: .utf8),
-           let user = try? jsonDecoder.decode(WebAppUser.self, from: userQuery) {
+           let user = try? jsonDecoder.decode(TGWebAppUser.self, from: userQuery) {
             self.user = user
         } else {
             self.user = nil
         }
         
         if let receiverQuery = dictionary[CodingKeys.receiver.rawValue]?.data(using: .utf8),
-           let receiver = try? jsonDecoder.decode(WebAppUser.self, from: receiverQuery) {
+           let receiver = try? jsonDecoder.decode(TGWebAppUser.self, from: receiverQuery) {
             self.receiver = receiver
         } else {
             self.receiver = nil
         }
         
         if let chatQuery = dictionary[CodingKeys.chat.rawValue]?.data(using: .utf8),
-           let chat = try? jsonDecoder.decode(WebAppChat.self, from: chatQuery) {
+           let chat = try? jsonDecoder.decode(TGWebAppChat.self, from: chatQuery) {
             self.chat = chat
         } else {
             self.chat = nil

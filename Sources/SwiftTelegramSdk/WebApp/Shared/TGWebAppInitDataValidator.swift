@@ -7,6 +7,9 @@
  [Validating data received via the Mini App](https://core.telegram.org/bots/webapps#validating-data-received-via-the-mini-app)
  **/
 
+import Foundation
+import Crypto
+
 public struct TGWebAppInitDataValidator {
     
     public func validateTelegramInitData(initData: String, botToken: String) -> Bool {
