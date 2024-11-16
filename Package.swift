@@ -7,7 +7,8 @@ let name: String = "SwiftTelegramSdk"
 let package = Package(
     name: name,
     platforms: [
-        .macOS(.v12)
+        .macOS(.v12),
+        .ios(.v13),
     ],
     products: [
         .library(
